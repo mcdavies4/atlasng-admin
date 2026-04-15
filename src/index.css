@@ -1,24 +1,51 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
+/* ── DARK THEME (default) ── */
+[data-theme="dark"] {
   --bg:        #0c0f0a;
   --surface:   #141810;
   --surface2:  #1a1f16;
   --border:    #242920;
   --border2:   #2e342a;
-  --accent:    #b8f55a;
-  --accent2:   #3b82f6;
-  --accent3:   #22c55e;
-  --accent4:   #a855f7;
-  --accent-dim:#7aad2e;
-  --danger:    #f55a5a;
-  --warn:      #f5c45a;
   --text:      #e8edd8;
   --muted:     #6b7560;
   --muted2:    #4a5240;
+}
+
+/* ── LIGHT THEME ── */
+[data-theme="light"] {
+  --bg:        #f7f8f4;
+  --surface:   #ffffff;
+  --surface2:  #f0f2ec;
+  --border:    #e0e4d8;
+  --border2:   #d0d6c8;
+  --text:      #1a1f16;
+  --muted:     #7a8570;
+  --muted2:    #9aa590;
+}
+
+/* ── SHARED ── */
+:root {
+  --accent:      #5a8f1a;
+  --accent2:     #2563eb;
+  --accent3:     #16a34a;
+  --accent4:     #9333ea;
+  --accent-dim:  #7aad2e;
+  --danger:      #dc2626;
+  --warn:        #d97706;
   --font-display: 'Fraunces', Georgia, serif;
   --font-body:    'DM Sans', sans-serif;
   --font-mono:    'DM Mono', monospace;
+}
+
+[data-theme="dark"] {
+  --accent:      #b8f55a;
+  --accent2:     #3b82f6;
+  --accent3:     #22c55e;
+  --accent4:     #a855f7;
+  --accent-dim:  #7aad2e;
+  --danger:      #f55a5a;
+  --warn:        #f5c45a;
 }
 
 html, body, #root {
@@ -29,14 +56,13 @@ html, body, #root {
   font-size: 14px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
 
-/* Animations */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -49,7 +75,7 @@ html, body, #root {
   to { transform: rotate(360deg); }
 }
 
-.fade-up { animation: fadeUp 0.4s ease both; }
+.fade-up   { animation: fadeUp 0.4s ease both; }
 .fade-up-1 { animation-delay: 0.05s; }
 .fade-up-2 { animation-delay: 0.10s; }
 .fade-up-3 { animation-delay: 0.15s; }
